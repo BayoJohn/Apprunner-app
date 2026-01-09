@@ -4,17 +4,33 @@ That is a fantastic way to approach a README! It frames the project as a **techn
 
 Here is a README structure designed around a "Scenario" and a "Justification" (The "Why") for each tool.
 
----
+graph LR
+    subgraph Your_PC [Local Environment]
+    A[Node.js Code] --> B[Bash Script]
+    B --> C(Docker Build)
+    end
+
+    subgraph AWS_Cloud [AWS Cloud]
+    C --> D[Amazon ECR]
+    D --> E[AWS App Runner]
+    end
+
+    E --> F((Live Website))
+    
+    style E fill:#ff9900,stroke:#232f3e,color:white
+    style D fill:#ff9900,stroke:#232f3e,color:white
+
+
 
 # AWS App Runner Deployment Pipeline
 
-## 📖 The Scenario
+##  The Scenario
 
 **The Challenge:** I had a Node.js application that needed to be deployed to a scalable, production-ready environment. The goal was to move away from manual server management (like EC2) and create a "push-button" deployment process where code updates could be containerized and shipped to the cloud automatically and securely.
 
 ---
 
-## 🛠️ The Toolchain: Why I Used Each Tool
+##  The Toolchain: Why I Used Each Tool
 
 ### 1. Amazon ECR (Elastic Container Registry)
 
@@ -43,7 +59,7 @@ Here is a README structure designed around a "Scenario" and a "Justification" (T
 
 ---
 
-## 🚀 How it Works (Step-by-Step)
+##  How it Works (Step-by-Step)
 
 1. **Develop**: Make changes to the Node.js source code.
 2. **Automate**: Run `./deploy.sh`.
