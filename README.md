@@ -28,12 +28,15 @@ Demonstration of an automated deploment using Apprunner.
 <img width="1070" height="252" alt="Screenshot 2026-01-09 184042" src="https://github.com/user-attachments/assets/80539096-70e2-464f-ab63-324500d5e8a8" />
 Figure 1: Private Amazon ECR repository setup with AES-256 encryption.
 
-
+<br>
+<br>
 
 
 <img width="1080" height="405" alt="Screenshot 2026-01-09 184120" src="https://github.com/user-attachments/assets/8980dc4d-50ea-4dd8-9c34-69d302803e9b" />
 Figure 2: Verified Docker image tags in the registry, ready for App Runner deployment.
 
+<br>
+<br>
 
 
   
