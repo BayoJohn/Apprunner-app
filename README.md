@@ -15,18 +15,24 @@ Demonstration of an automated deploment using Apprunner.
 
 ## 📝 The Scenario
 **The Challenge:** I had a Node.js application that needed to be deployed to a scalable, production-ready environment. The goal was to move away from manual server management (like EC2) and create a "push-button" deployment process where code updates could be containerized and shipped to the cloud automatically and securely.
-<img width="1335" height="77" alt="Screenshot 2026-01-09 182054" src="https://github.com/user-attachments/assets/1572e254-754e-47e9-95f0-cdade57907c1" />
-<img width="1314" height="325" alt="Screenshot 2026-01-09 182027" src="https://github.com/user-attachments/assets/1939e34d-5c1a-4567-b386-036ca7acbb01" />
-<img width="1114" height="435" alt="Screenshot 2026-01-09 193138" src="https://github.com/user-attachments/assets/bb6b3274-3fac-4c6b-a789-1e7ee029ba4e" />
-<img width="1080" height="405" alt="Screenshot 2026-01-09 184120" src="https://github.com/user-attachments/assets/eb33ec7c-932b-4690-b787-88f364c78f79" />
-<img width="1070" height="252" alt="Screenshot 2026-01-09 184042" src="https://github.com/user-attachments/assets/e81e8994-33e9-4722-82ec-98e04975c4ca" />
-<img width="621" height="347" alt="Screenshot 2026-01-09 183915" src="https://github.com/user-attachments/assets/52c6080f-a952-43bc-82bb-f04f5858ab1b" />
+
+<img width="621" height="347" alt="Screenshot 2026-01-09 183915" src="https://github.com/user-attachments/assets/405cb74b-51a0-47b4-b5b9-40d190bdd747" />
 
 ---
+
 
 ## 🏗️ Core Infrastructure & Justification
 
 * **Amazon ECR (Elastic Container Registry):** I utilized a private AWS ECR registry over public alternatives to ensure maximum security and performance. By hosting the container images within the same AWS ecosystem as the application, I leveraged **IAM roles** for fine-grained access control, ensuring only authorized services like App Runner can pull images.
+
+![ECR Repository List](<img width="1070" height="252" alt="Screenshot 2026-01-09 184042" src="https://github.com/user-attachments/assets/80539096-70e2-464f-ab63-324500d5e8a8" />)
+*Figure 1: Private Amazon ECR repository setup with AES-256 encryption.*
+
+![ECR Image Tags](<img width="1080" height="405" alt="Screenshot 2026-01-09 184120" src="https://github.com/user-attachments/assets/8980dc4d-50ea-4dd8-9c34-69d302803e9b" />)
+*Figure 2: Verified Docker image tags in the registry, ready for App Runner deployment.*
+
+
+  
 * **AWS App Runner:** This fully managed serverless service was selected to eliminate the overhead of managing EC2 instances or complex VPC configurations. It provides a streamlined "Heroku-like" experience within AWS, automatically handling **auto-scaling, load balancing, and SSL/TLS termination** right out of the box.
 * **Bash Automation (`deploy.sh`):** To eliminate the risk of human error during manual deployments, I engineered a custom shell script to standardize the pipeline. This script automates the entire lifecycle—from AWS authentication and Docker building to image tagging and ECR pushing—ensuring every release is **consistent and repeatable**.
 * **Node.js:** The application is built on Node.js to take advantage of its lightweight, event-driven architecture. This makes it a perfect fit for containerized environments, allowing for fast startup times and efficient resource utilization within the App Runner service.
@@ -34,6 +40,7 @@ Demonstration of an automated deploment using Apprunner.
 ---
 
 ## ⚙️ How it Works (Step-by-Step)
+
 
 1.  **Develop**: Make changes to the Node.js source code locally.
 2.  **Automate**: Run the `./deploy.sh` script.
